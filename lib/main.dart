@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main()
 {
@@ -21,8 +23,8 @@ class _demoState extends State<demo> {
   void initState() {
     super.initState();
 
-    curDate = DateTime.now().toString();
-    curTime = TimeOfDay.now().toString();
+    curDate = "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
+    curTime = "${TimeOfDay.now().hour}:${TimeOfDay.now().minute}";
   }
 
   @override
@@ -50,7 +52,7 @@ class _demoState extends State<demo> {
                           .then((value) {
                         if (value != null) {
                           setState(() {
-                            curDate = value.toString();
+                            curDate = "${value.day}/${value.month}/${value.year}";
                           });
                         }
                       });
@@ -66,7 +68,7 @@ class _demoState extends State<demo> {
                           .then((value) {
                         if (value != null) {
                           setState(() {
-                            curTime = value.toString();
+                            curTime = "${value.minute}${value.hour}";
                           });
                         }
                       });
@@ -95,7 +97,7 @@ class _demoState extends State<demo> {
               ],
             ),
           ),
-        );
+        )
     );
   }
 }
